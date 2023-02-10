@@ -20,6 +20,8 @@ namespace MatchGame
     /// </summary>
     public partial class MainWindow : Window
     {
+        private TextBlock lastClickedTextBlock = null;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -47,6 +49,34 @@ namespace MatchGame
                 int index = randy.Next(animalEmoji.Count);
                 tb.Text = animalEmoji[index];
                 animalEmoji.RemoveAt(index);
+            }
+        }
+
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            TextBlock tb = (TextBlock)sender;
+
+            if (lastClickedTextBlock == null)
+            {
+                // clicked first TextBlock of pair
+                lastClickedTextBlock = tb;
+                tb.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                // clicked second TextBlock of pair
+                if (tb.Text == lastClickedTextBlock.Text)
+                {
+                    // match
+                    tb.Visibility = Visibility.Hidden;
+
+                }
+                else
+                {
+                    // not a match
+                    lastClickedTextBlock.Visibility = Visibility.Visible;
+                }
+                lastClickedTextBlock = null;
             }
         }
     }
