@@ -1,25 +1,173 @@
-﻿<Window x:Class="ExperimentWithControls.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ExperimentWithControls"
-        mc:Ignorable="d"
-        Title="Experiment With Controls"
-        Height="450"
-        Width="800">
+﻿<Window
+    x:Class="ExperimentWithControls.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:ExperimentWithControls"
+    mc:Ignorable="d"
+    Title="Experiment With Controls"
+    Height="450"
+    Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition
+                Width="*" />
+            <ColumnDefinition
+                Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition
+                Height="2*" />
+            <RowDefinition
+                Height="2*" />
+            <RowDefinition
+                Height="*" />
         </Grid.RowDefinitions>
-        
-        
-        
+
+        <Label
+            Content="Enter a number"
+            FontSize="18"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="10,10,0,0" />
+        <TextBlock
+            Grid.Column="1"
+            x:Name="numberTextBlock"
+            Text="#"
+            TextWrapping="Wrap"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="24" />
+        <TextBox
+            x:Name="numberTextBox"
+            HorizontalAlignment="Left"
+            Height="23"
+            Margin="10,49,0,0"
+            TextWrapping="Wrap"
+            Text="0"
+            VerticalAlignment="Top"
+            Width="120"
+            FontSize="18"
+            TextChanged="NumberTextBox_TextChanged"
+            PreviewTextInput="NumberTextBox_PreviewTextInput" />
+        <RadioButton
+            Content="1"
+            HorizontalAlignment="Left"
+            Margin="200,49,0,0"
+            VerticalAlignment="Top"
+            Checked="RadioButton_Checked" />
+        <RadioButton
+            Content="2"
+            HorizontalAlignment="Left"
+            Margin="230,49,0,0"
+            VerticalAlignment="Top"
+            Checked="RadioButton_Checked" />
+        <RadioButton
+            Content="3"
+            HorizontalAlignment="Left"
+            Margin="260,49,0,0"
+            VerticalAlignment="Top"
+            Checked="RadioButton_Checked" />
+        <RadioButton
+            Content="4"
+            HorizontalAlignment="Left"
+            Margin="200,69,0,0"
+            VerticalAlignment="Top"
+            Checked="RadioButton_Checked" />
+        <RadioButton
+            Content="5"
+            HorizontalAlignment="Left"
+            Margin="230,69,0,0"
+            VerticalAlignment="Top"
+            Checked="RadioButton_Checked" />
+        <RadioButton
+            Content="6"
+            HorizontalAlignment="Left"
+            Margin="260,69,0,0"
+            VerticalAlignment="Top"
+            Checked="RadioButton_Checked" />
+        <ListBox
+            Grid.Row="1"
+            Margin="10,10,10,10"
+            SelectionChanged="ListBox_SelectionChanged">
+            <ListBoxItem
+                x:Name="myListBox"
+                Content="1" />
+            <ListBoxItem
+                Content="2" />
+            <ListBoxItem
+                Content="3" />
+            <ListBoxItem
+                Content="4" />
+            <ListBoxItem
+                Content="5" />
+        </ListBox>
+        <ComboBox
+            x:Name="readOnlyComboBox"
+            Grid.Row="1"
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            Margin="10,10,0,0"
+            VerticalAlignment="Top"
+            Width="120"
+            SelectionChanged="ReadOnlyComboBox_SelectionChanged">
+            <ListBoxItem
+                Content="1" />
+            <ListBoxItem
+                Content="2" />
+            <ListBoxItem
+                Content="3" />
+            <ListBoxItem
+                Content="4" />
+            <ListBoxItem
+                Content="5" />
+        </ComboBox>
+        <ComboBox
+            x:Name="editableComboBox"
+            Grid.Row="1"
+            Grid.Column="1"
+            HorizontalAlignment="Right"
+            Margin="0,10,10,0"
+            VerticalAlignment="Top"
+            Width="120"
+            IsEditable="True"
+            PreviewTextInput="NumberTextBox_PreviewTextInput"
+            TextBoxBase.TextChanged="EditableComboBox_TextChanged">
+            <ListBoxItem
+                Content="1" />
+            <ListBoxItem
+                Content="2" />
+            <ListBoxItem
+                Content="3" />
+            <ListBoxItem
+                Content="4" />
+            <ListBoxItem
+                Content="5" />
+        </ComboBox>
+        <Slider
+            x:Name="smallSlider"
+            HorizontalAlignment="Left"
+            Margin="10,10,0,0"
+            Grid.Row="2"
+            VerticalAlignment="Top"
+            Minimum="1"
+            Maximum="5"
+            AutoToolTipPlacement="TopLeft"
+            Width="120"
+            ValueChanged="SmallSlider_ValueChanged" />
+        <Slider
+            x:Name="bigSlider"
+            Grid.Row="2"
+            Grid.ColumnSpan="2"
+            Margin="10,33,10,10"
+            VerticalAlignment="Center"
+            Minimum="1111111111"
+            Maximum="9999999999"
+            AutoToolTipPlacement="TopLeft"
+            ValueChanged="BigSlider_ValueChanged"
+            Value="5555555555" />
+
+
     </Grid>
 </Window>
